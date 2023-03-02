@@ -105,5 +105,7 @@ p6.addLancer(new Lancer("poids", 14.93));
 p6.addLancer(new Lancer("disque", 52.87));
 p6.addLancer(new Lancer("javelot", 64.96));
 
-console.log(decathlon.theBestCountry("ES"));
-console.log(decathlon.theBestDecathlon());
+/* console.log(decathlon.theBestCountry("ES"));
+console.log(decathlon.theBestDecathlon()); */
+
+decathlon.showAll();

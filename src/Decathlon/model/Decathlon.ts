@@ -68,4 +68,18 @@ export class Decathlon {
         }
         return best.country ? best : null;
     }
+    showAll(): void {
+        let array: Array<Array<string | number>> = [[]];
+        for (let i = 0; i < this._particiers.length; i++) {
+            array.push([this._particiers[i].name, this._particiers[i].points]);
+        }
+        console.log(this.sort(array));
+    }
+
+    private sort(ary: Array<Array<string | number>>): Array<Array<string | number>> {
+        ary.sort((a, b) => {
+            return a[1] < b[1] ? 1 : -1;
+        });
+        return ary;
+    }
 }
