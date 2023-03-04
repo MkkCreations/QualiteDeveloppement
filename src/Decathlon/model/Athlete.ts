@@ -1,21 +1,18 @@
-import { Saut } from "./Saut";
-import { Course } from "./Course";
-import { Lancer } from "./Lancer";
+import { Epreuve } from "./Epreuve";
 
 export class Athlete {
     private _name: string;
     private _country: string;
     private _gender: string;
     private _points: number;
-    private _saut: Array<Saut> = [];
-    private _course: Array<Course> = [];
-    private _lancer: Array<Lancer> = [];
+    private _epreuve: Map<Epreuve, number>;
 
     constructor(name: string, country: string, gender: string) {
         this._name = name;
         this._country = country;
         this._gender = gender;
         this._points = 0;
+        this._epreuve = new Map();
     }
 
     get name(): string {
@@ -34,101 +31,111 @@ export class Athlete {
         return this._points;
     }
 
-    get saut(): Array<Saut> {
-        return this._saut;
-    }
-
-    get course(): Array<Course> {
-        return this._course;
-    }
-
-    get lancer(): Array<Lancer> {
-        return this._lancer;
-    }
-    addPoints(points: number): void {
-        this._points += points;
-    }
-
-    addSaut(saut: Saut): void {
-        this._saut.push(saut);
-        this._points += saut.points;
-    }
-
-    addCourse(course: Course): void {
-        this._course.push(course);
-        this._points += course.points;
-    }
-
-    addLancer(lancer: Lancer): void {
-        this._lancer.push(lancer);
-        this._points += lancer.points;
+    addEpreuve(...epreuve: Array<Epreuve>): void {
+        for (const key of epreuve) {
+            this._epreuve.set(key, key.points);
+            this._points += key.points;
+        }
     }
 
     getPointsSaut(): number {
-        let points = 0;
-
-        points += this.getPointsSautHauteur();
-        points += this.getPointsSautLongueur();
-        points += this.getPointsSautPerche();
-
-        return points;
+        return this.getPointsSautHauteur() + this.getPointsSautLongueur() + this.getPointsSautPerche();
     }
 
     getPointsCourse(): number {
-        let points = 0;
-
-        points += this.getPointsCourse100();
-        points += this.getPointsCourse400();
-        points += this.getPointsCourse110();
-        points += this.getPointsCourse1500();
-
-        return points;
+        return this.getPointsCourse100() + this.getPointsCourse400() + this.getPointsCourse1500();
     }
 
     getPointsLancer(): number {
-        let points = 0;
-
-        points += this.getPointsLancerPoids();
-        points += this.getPointsLancerDisque();
-        points += this.getPointsLancerJavelot();
-
-        return points;
+        return this.getPointsLancerDisque() + this.getPointsLancerJavelot();
     }
 
     getPointsSautLongueur(): number {
-        return this._saut.find((saut) => saut.type === "longueur")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "longueur") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsSautHauteur(): number {
-        return this._saut.find((saut) => saut.type === "hauteur")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "hauteur") {
+                return key[1];
+            }
+        }
+        return 0;
     }
     getPointsSautPerche(): number {
-        return this._saut.find((saut) => saut.type === "perche")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "perche") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsCourse100(): number {
-        return this._course.find((course) => course.type === "100m")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "100m") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsCourse400(): number {
-        return this._course.find((course) => course.type === "400m")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "400m") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsCourse110(): number {
-        return this._course.find((course) => course.type === "110m haies")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "110m haies") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsCourse1500(): number {
-        return this._course.find((course) => course.type === "1500m")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "1500m") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 
     getPointsLancerPoids(): number {
-        return this._lancer.find((lancer) => lancer.type === "poids")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "poids") {
+                return key[1];
+            }
+        }
+        return 0;
     }
+
     getPointsLancerDisque(): number {
-        return this._lancer.find((lancer) => lancer.type === "disque")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "disque") {
+                return key[1];
+            }
+        }
+        return 0;
     }
+
     getPointsLancerJavelot(): number {
-        return this._lancer.find((lancer) => lancer.type === "javelot")!.points;
+        for (const key of this._epreuve) {
+            if (key[0].type === "javelot") {
+                return key[1];
+            }
+        }
+        return 0;
     }
 }

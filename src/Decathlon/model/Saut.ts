@@ -4,7 +4,6 @@ import { IBareme } from "./IBareme";
 
 export class Saut extends Epreuve implements IPoints, IBareme {
     private _distance: number;
-    private _mapBareme: Map<string, [number, number, number]>;
 
     constructor(type: string, distance: number, year = 2023) {
         super(type, year);

@@ -4,7 +4,6 @@ import { IPoints } from "./IPoints";
 
 export class Course extends Epreuve implements IPoints, IBareme {
     private _time: number;
-    private _mapBareme: Map<string, [number, number, number]>;
 
     constructor(type: string, time: number, year = 2023) {
         super(type, year);

@@ -23,96 +23,25 @@ let p7 = new Athlete("Momo", "ES", "H");
 
 decathlon.addParticier(p, p1, p2, p3, p4, p5, p6, p7);
 
-p.addCourse(new Course("100m", 10.49));
-p.addCourse(new Course("110m haies", 15.34));
-p.addCourse(new Course("400m", 46.17));
-p.addCourse(new Course("1500m", 240.28));
-p.addSaut(new Saut("longueur", 7.62));
-p.addSaut(new Saut("hauteur", 2.08));
-p.addSaut(new Saut("perche", 4.57));
-p.addLancer(new Lancer("poids", 16.43));
-p.addLancer(new Lancer("disque", 49.14));
-p.addLancer(new Lancer("javelot", 63.43));
+p.addEpreuve(new Course("100m", 10.49), new Course("110m haies", 15.34), new Course("400m", 46.17), new Course("1500m", 240.28), new Saut("longueur", 7.62), new Saut("hauteur", 2.08), new Saut("perche", 4.57), new Lancer("poids", 16.43), new Lancer("disque", 49.14), new Lancer("javelot", 63.43));
 
-p1.addCourse(new Course("100m", 10.8));
-p1.addCourse(new Course("110m haies", 13.34));
-p1.addCourse(new Course("400m", 42.17));
-p1.addCourse(new Course("1500m", 267.28));
-p1.addSaut(new Saut("longueur", 6.62));
-p1.addSaut(new Saut("hauteur", 2.28));
-p1.addSaut(new Saut("perche", 5.57));
-p1.addLancer(new Lancer("poids", 14.43));
-p1.addLancer(new Lancer("disque", 45.14));
-p1.addLancer(new Lancer("javelot", 60.43));
+p1.addEpreuve(new Course("100m", 10.8), new Course("110m haies", 13.34), new Course("400m", 42.17), new Course("1500m", 267.28), new Saut("longueur", 6.62), new Saut("hauteur", 2.28), new Saut("perche", 5.57), new Lancer("poids", 14.43), new Lancer("disque", 45.14), new Lancer("javelot", 60.43));
 
-p2.addCourse(new Course("100m", 11.49));
-p2.addCourse(new Course("110m haies", 14.34));
-p2.addCourse(new Course("400m", 43.17));
-p2.addCourse(new Course("1500m", 250.28));
-p2.addSaut(new Saut("longueur", 8.62));
-p2.addSaut(new Saut("hauteur", 2.68));
-p2.addSaut(new Saut("perche", 5.27));
-p2.addLancer(new Lancer("poids", 15.43));
-p2.addLancer(new Lancer("disque", 50.14));
-p2.addLancer(new Lancer("javelot", 61.63));
+p2.addEpreuve(new Course("100m", 11.49), new Course("110m haies", 14.34), new Course("400m", 43.17), new Course("1500m", 250.28), new Saut("longueur", 8.62), new Saut("hauteur", 2.68), new Saut("perche", 5.27), new Lancer("poids", 15.43), new Lancer("disque", 50.14), new Lancer("javelot", 61.63));
 
-p3.addCourse(new Course("100m", 10.21));
-p3.addCourse(new Course("110m haies", 17.34));
-p3.addCourse(new Course("400m", 41.37));
-p3.addCourse(new Course("1500m", 255.28));
-p3.addSaut(new Saut("longueur", 6.82));
-p3.addSaut(new Saut("hauteur", 1.98));
-p3.addSaut(new Saut("perche", 5.97));
-p3.addLancer(new Lancer("poids", 13.43));
-p3.addLancer(new Lancer("disque", 47.54));
-p3.addLancer(new Lancer("javelot", 62.93));
+p3.addEpreuve(new Course("100m", 10.21), new Course("110m haies", 17.34), new Course("400m", 41.37), new Course("1500m", 255.28), new Saut("longueur", 6.82), new Saut("hauteur", 1.98), new Saut("perche", 5.97), new Lancer("poids", 13.43), new Lancer("disque", 47.54), new Lancer("javelot", 62.93));
 
-p4.addCourse(new Course("100m", 10.56));
-p4.addCourse(new Course("110m haies", 15.88));
-p4.addCourse(new Course("400m", 47.98));
-p4.addCourse(new Course("1500m", 270.68));
-p4.addSaut(new Saut("longueur", 6.92));
-p4.addSaut(new Saut("hauteur", 3.48));
-p4.addSaut(new Saut("perche", 5.07));
-p4.addLancer(new Lancer("poids", 17.01));
-p4.addLancer(new Lancer("disque", 46.04));
-p4.addLancer(new Lancer("javelot", 64.03));
+p4.addEpreuve(new Course("100m", 10.56), new Course("110m haies", 15.88), new Course("400m", 47.98), new Course("1500m", 270.68), new Saut("longueur", 6.92), new Saut("hauteur", 3.48), new Saut("perche", 5.07), new Lancer("poids", 17.01), new Lancer("disque", 46.04), new Lancer("javelot", 64.03));
 
-p5.addCourse(new Course("100m", 9.99));
-p5.addCourse(new Course("110m haies", 13.93));
-p5.addCourse(new Course("400m", 44.13));
-p5.addCourse(new Course("1500m", 256.28));
-p5.addSaut(new Saut("longueur", 6.6));
-p5.addSaut(new Saut("hauteur", 2.98));
-p5.addSaut(new Saut("perche", 5.5));
-p5.addLancer(new Lancer("poids", 16.43));
-p5.addLancer(new Lancer("disque", 53.14));
-p5.addLancer(new Lancer("javelot", 65.03));
 
-p6.addCourse(new Course("100m", 10.0));
-p6.addCourse(new Course("110m haies", 12.44));
-p6.addCourse(new Course("400m", 41.18));
-p6.addCourse(new Course("1500m", 235.78));
-p6.addSaut(new Saut("longueur", 8.34));
-p6.addSaut(new Saut("hauteur", 3.38));
-p6.addSaut(new Saut("perche", 3.97));
-p6.addLancer(new Lancer("poids", 14.93));
-p6.addLancer(new Lancer("disque", 52.87));
-p6.addLancer(new Lancer("javelot", 64.96));
+p5.addEpreuve(new Course("100m", 9.99), new Course("110m haies", 13.93), new Course("400m", 44.13), new Course("1500m", 256.28), new Saut("longueur", 6.6), new Saut("hauteur", 2.98), new Saut("perche", 5.5), new Lancer("poids", 16.43), new Lancer("disque", 53.14), new Lancer("javelot", 65.03));
 
-p7.addCourse(new Course("100m", 10.39));
-p7.addCourse(new Course("110m haies", 13.81));
-p7.addCourse(new Course("400m", 46.17));
-p7.addCourse(new Course("1500m", 233.79));
-p7.addSaut(new Saut("longueur", 7.76));
-p7.addSaut(new Saut("hauteur", 2.21));
-p7.addSaut(new Saut("perche", 5.29));
-p7.addLancer(new Lancer("poids", 18.40));
-p7.addLancer(new Lancer("disque", 56.18));
-p7.addLancer(new Lancer("javelot", 77.2));
 
-/* console.log(decathlon.theBestCountry("FR"));
-console.log(decathlon.theBestDecathlon()); */
+p6.addEpreuve(new Course("100m", 10.49), new Course("110m haies", 13.34), new Course("400m", 42.17), new Course("1500m", 267.28), new Saut("longueur", 6.62), new Saut("hauteur", 2.28), new Saut("perche", 5.57), new Lancer("poids", 14.43), new Lancer("disque", 45.14), new Lancer("javelot", 60.43));
+
+p7.addEpreuve(new Course("100m", 10.39), new Course("110m haies", 13.81), new Course("400m", 46.17), new Course("1500m", 233.79), new Saut("longueur", 7.76), new Saut("hauteur", 2.21), new Saut("perche", 5.29), new Lancer("poids", 18.40), new Lancer("disque", 56.18), new Lancer("javelot", 77.20));
+
 
 decathlon.showAll();
-console.log(decathlon.theBestCountry("FR")!.points);
+console.log(decathlon.theBestCountry("FR")!.name);
+

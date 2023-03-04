@@ -5,6 +5,7 @@ export abstract class Epreuve implements IBareme, IPoints {
     protected _type: string;
     protected _points: number;
     protected _year: number;
+    protected _mapBareme: Map<string, [number, number, number]>;
 
     constructor(type: string, year = 2023) {
         this._type = type;
