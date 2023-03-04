@@ -2,7 +2,7 @@ import { Saut } from "./Saut";
 import { Course } from "./Course";
 import { Lancer } from "./Lancer";
 
-export class Sportif {
+export class Athlete {
     private _name: string;
     private _country: string;
     private _gender: string;
@@ -88,115 +88,47 @@ export class Sportif {
     getPointsLancer(): number {
         let points = 0;
 
+        points += this.getPointsLancerPoids();
         points += this.getPointsLancerDisque();
         points += this.getPointsLancerJavelot();
-        points += this.getPointsLancerMarteau();
 
         return points;
     }
 
     getPointsSautLongueur(): number {
-        let poids = 0;
-        for (const key in this._saut) {
-            if (this._saut[key].type === "longueur") {
-                poids += this._saut[key].points;
-            }
-        }
-        return poids;
+        return this._saut.find((saut) => saut.type === "longueur")!.points;
     }
 
     getPointsSautHauteur(): number {
-        let poids = 0;
-        for (const key in this._saut) {
-            if (this._saut[key].type === "hauteur") {
-                poids += this._saut[key].points;
-            }
-        }
-        return poids;
+        return this._saut.find((saut) => saut.type === "hauteur")!.points;
     }
     getPointsSautPerche(): number {
-        let poids = 0;
-        for (const key in this._saut) {
-            if (this._saut[key].type === "perche") {
-                poids += this._saut[key].points;
-            }
-        }
-        return poids;
+        return this._saut.find((saut) => saut.type === "perche")!.points;
     }
 
     getPointsCourse100(): number {
-        let poids = 0;
-        for (const key in this._course) {
-            if (this._course[key].type === "100m") {
-                poids += this._course[key].points;
-            }
-        }
-        return poids;
+        return this._course.find((course) => course.type === "100m")!.points;
     }
 
     getPointsCourse400(): number {
-        let poids = 0;
-        for (const key in this._course) {
-            if (this._course[key].type === "400m") {
-                poids += this._course[key].points;
-            }
-        }
-        return poids;
+        return this._course.find((course) => course.type === "400m")!.points;
     }
+
     getPointsCourse110(): number {
-        let poids = 0;
-        for (const key in this._course) {
-            if (this._course[key].type === "110m haites") {
-                poids += this._course[key].points;
-            }
-        }
-        return poids;
+        return this._course.find((course) => course.type === "110m haies")!.points;
     }
 
     getPointsCourse1500(): number {
-        let poids = 0;
-        for (const key in this._course) {
-            if (this._course[key].type === "1500m") {
-                poids += this._course[key].points;
-            }
-        }
-        return poids;
+        return this._course.find((course) => course.type === "1500m")!.points;
     }
 
     getPointsLancerPoids(): number {
-        let poids = 0;
-        for (const key in this._lancer) {
-            if (this._lancer[key].type === "poids") {
-                poids += this._lancer[key].points;
-            }
-        }
-        return poids;
+        return this._lancer.find((lancer) => lancer.type === "poids")!.points;
     }
     getPointsLancerDisque(): number {
-        let poids = 0;
-        for (const key in this._lancer) {
-            if (this._lancer[key].type === "disque") {
-                poids += this._lancer[key].points;
-            }
-        }
-        return poids;
+        return this._lancer.find((lancer) => lancer.type === "disque")!.points;
     }
     getPointsLancerJavelot(): number {
-        let poids = 0;
-        for (const key in this._lancer) {
-            if (this._lancer[key].type === "javelot") {
-                poids += this._lancer[key].points;
-            }
-        }
-        return poids;
-    }
-    getPointsLancerMarteau(): number {
-        let poids = 0;
-        for (const key in this._lancer) {
-            if (this._lancer[key].type === "marteau") {
-                poids += this._lancer[key].points;
-            }
-        }
-        return poids;
+        return this._lancer.find((lancer) => lancer.type === "javelot")!.points;
     }
 }

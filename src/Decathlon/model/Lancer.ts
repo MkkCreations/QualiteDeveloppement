@@ -1,65 +1,38 @@
-export class Lancer {
-    private _type: string;
-    private _points: number;
+import { Epreuve } from "./Epreuve";
+import { IPoints } from "./IPoints";
+import { IBareme } from "./IBareme";
+
+export class Lancer extends Epreuve implements IPoints, IBareme {
     private _distance: number;
-    private _year: number;
+    private _mapBareme: Map<string, [number, number, number]>;
 
     constructor(type: string, distance: number, year = 2023) {
-        this._type = type;
+        super(type, year);
         this._distance = distance;
-        this._year = year;
-        this._points = 0;
+        this._mapBareme = new Map<string, [number, number, number]>();
+        this.setBareme();
         this.addPoints(distance);
-    }
-
-    get type(): string {
-        return this._type;
-    }
-
-    get points(): number {
-        return this._points;
     }
 
     get distance(): number {
         return this._distance;
     }
 
-    get year(): number {
-        return this._year;
-    }
-
-    set type(value: string) {
-        this._type = value;
-    }
-
     set distance(distance: number) {
         this._distance = distance;
     }
 
-    set year(year: number) {
-        this._year = year;
+    setBareme(): void {
+        this._mapBareme.set("poids", [13.53, -133.47, 4.87]);
+        this._mapBareme.set("disque", [41.72, -165.56, 14.46]);
+        this._mapBareme.set("javelot", [57.46, -173.25, 19.74]);
     }
 
     addPoints(value: number): void {
-        if (this._type === "poids") {
-            if (value < 13.53) {
-                this._points = 0;
-            } else {
-                this._points = Math.floor(700 + (300 / 4.87) * (18.4 - value));
-            }
-        } else if (this._type === "disque") {
-            if (value < 41.72) {
-                this._points = 0;
-            } else {
-                let p = 300 / 14.46;
-                this._points = Math.floor(700 + (300 / 14.46) * (56.18 - value));
-            }
-        } else if (this._type === "javelot") {
-            if (value < 57.46) {
-                this._points = 0;
-            } else {
-                this._points = Math.floor(700 + (300 / 19.74) * (77.2 - value));
-            }
+        if (this._mapBareme.get(this._type)![0] > value) {
+            this._points = 0;
+        } else {
+            this._points = Math.floor((300 / this._mapBareme.get(this._type)![2]) * value + (this._mapBareme.get(this._type)![1]));
         }
     }
 }

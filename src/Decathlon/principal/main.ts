@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { writeFileSync } from "fs";
 import { Decathlon } from "../model/Decathlon";
-import { Sportif } from "../model/Sportif";
+import { Athlete } from "../model/Athlete";
 import { Course } from "../model/Course";
 import { Saut } from "../model/Saut";
 import { Lancer } from "../model/Lancer";
@@ -12,21 +12,16 @@ import { Lancer } from "../model/Lancer";
 ); */
 
 let decathlon = new Decathlon();
-let p = new Sportif("Jean", "FR", "H");
-let p1 = new Sportif("Hola", "FR", "H");
-let p2 = new Sportif("Saha", "FR", "H");
-let p3 = new Sportif("Roho", "FR", "H");
-let p4 = new Sportif("Tuhu", "ES", "H");
-let p5 = new Sportif("Suuu", "ES", "H");
-let p6 = new Sportif("Popo", "ES", "H");
+let p = new Athlete("Jean", "FR", "H");
+let p1 = new Athlete("Hola", "FR", "H");
+let p2 = new Athlete("Saha", "FR", "H");
+let p3 = new Athlete("Roho", "FR", "H");
+let p4 = new Athlete("Tuhu", "ES", "H");
+let p5 = new Athlete("Suuu", "ES", "H");
+let p6 = new Athlete("Popo", "ES", "H");
+let p7 = new Athlete("Momo", "ES", "H");
 
-decathlon.addParticier(p);
-decathlon.addParticier(p1);
-decathlon.addParticier(p2);
-decathlon.addParticier(p3);
-decathlon.addParticier(p4);
-decathlon.addParticier(p5);
-decathlon.addParticier(p6);
+decathlon.addParticier(p, p1, p2, p3, p4, p5, p6, p7);
 
 p.addCourse(new Course("100m", 10.49));
 p.addCourse(new Course("110m haies", 15.34));
@@ -105,7 +100,19 @@ p6.addLancer(new Lancer("poids", 14.93));
 p6.addLancer(new Lancer("disque", 52.87));
 p6.addLancer(new Lancer("javelot", 64.96));
 
-/* console.log(decathlon.theBestCountry("ES"));
+p7.addCourse(new Course("100m", 10.39));
+p7.addCourse(new Course("110m haies", 13.81));
+p7.addCourse(new Course("400m", 46.17));
+p7.addCourse(new Course("1500m", 233.79));
+p7.addSaut(new Saut("longueur", 7.76));
+p7.addSaut(new Saut("hauteur", 2.21));
+p7.addSaut(new Saut("perche", 5.29));
+p7.addLancer(new Lancer("poids", 18.40));
+p7.addLancer(new Lancer("disque", 56.18));
+p7.addLancer(new Lancer("javelot", 77.2));
+
+/* console.log(decathlon.theBestCountry("FR"));
 console.log(decathlon.theBestDecathlon()); */
 
 decathlon.showAll();
+console.log(decathlon.theBestCountry("FR")!.points);

@@ -1,23 +1,25 @@
-import { Sportif } from "./Sportif";
+import { Athlete } from "./Athlete";
 
 export class Decathlon {
-    private _particiers: Array<Sportif> = [];
-    private _theBest: Sportif;
+    private _particiers: Array<Athlete> = [];
+    private _theBest: Athlete;
 
-    get particiers(): Array<Sportif> {
+    get particiers(): Array<Athlete> {
         return this._particiers;
     }
 
-    get theBest(): Sportif {
+    get theBest(): Athlete {
         return this._theBest;
     }
 
-    addParticier(value: Sportif): void {
-        this._particiers.push(value);
+    addParticier(...value: Array<Athlete>): void {
+        for (const key in value) {
+            this._particiers.push(value[key]);
+        }
     }
 
-    theBestDecathlon(): Sportif | null {
-        let best = new Sportif("", "", "");
+    theBestDecathlon(): Athlete | null {
+        let best = new Athlete("", "", "");
         for (let i = 0; i < this._particiers.length; i++) {
             if (this._particiers[i].points > best.points) {
                 best = this._particiers[i];
@@ -26,38 +28,38 @@ export class Decathlon {
         return best.points ? best : null;
     }
 
-    theBestSauteur(): Sportif {
-        let best = this._particiers[0];
+    theBestSauteur(): Athlete | null {
+        let best = new Athlete("", "", "");
         for (let i = 0; i < this._particiers.length; i++) {
             if (this._particiers[i].getPointsSaut() > best.getPointsSaut()) {
                 best = this._particiers[i];
             }
         }
-        return best;
+        return best.points ? best : null;
     }
 
-    theBestLanceur(): Sportif {
-        let best = this._particiers[0];
+    theBestLanceur(): Athlete | null {
+        let best = new Athlete("", "", "");
         for (let i = 0; i < this._particiers.length; i++) {
             if (this._particiers[i].getPointsLancer() > best.getPointsLancer()) {
                 best = this._particiers[i];
             }
         }
-        return best;
+        return best.points ? best : null;
     }
 
-    theBestCourseur(): Sportif {
-        let best = this._particiers[0];
+    theBestCourseur(): Athlete | null {
+        let best = new Athlete("", "", "");
         for (let i = 0; i < this._particiers.length; i++) {
             if (this._particiers[i].getPointsCourse() > best.getPointsCourse()) {
                 best = this._particiers[i];
             }
         }
-        return best;
+        return best.points ? best : null;
     }
 
-    theBestCountry(nationalite: string): Sportif | null {
-        let best = new Sportif("", "", "");
+    theBestCountry(nationalite: string): Athlete | null {
+        let best = new Athlete("", "", "");
         for (const key in this._particiers) {
             if (
                 this._particiers[key].country === nationalite &&
@@ -69,17 +71,19 @@ export class Decathlon {
         return best.country ? best : null;
     }
     showAll(): void {
-        let array: Array<Array<string | number>> = [[]];
+        let map: Map<string, number> = new Map();
         for (let i = 0; i < this._particiers.length; i++) {
-            array.push([this._particiers[i].name, this._particiers[i].points]);
+            map.set(this._particiers[i].name, this._particiers[i].points);
         }
-        console.log(this.sort(array));
+        console.log(this.sort(map));
     }
 
-    private sort(ary: Array<Array<string | number>>): Array<Array<string | number>> {
-        ary.sort((a, b) => {
-            return a[1] < b[1] ? 1 : -1;
-        });
-        return ary;
+    private sort(map: Map<string, number>): Map<string, number> {
+        map = new Map(
+            [...map.entries()].sort((a, b) => {
+                return b[1] - a[1];
+            })
+        );
+        return map;
     }
 }
