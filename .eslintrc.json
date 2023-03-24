@@ -20,9 +20,9 @@
     "no-unused-vars": 0,
     "@typescript-eslint/adjacent-overload-signatures": 0, // Sinon set et get doivent se suivre
     "@typescript-eslint/no-inferrable-types": [
-      1,
+      0,
       {
-        "ignoreParameters": false
+        "ignoreParameters": true
       }
     ],
     "@typescript-eslint/no-non-null-assertion": 0,
